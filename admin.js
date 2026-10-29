@@ -64,7 +64,7 @@ function bindForms() {
     reader.onload = function(evt) {
       setLogo(evt.target.result);
       document.getElementById('site-logo').innerHTML = `<img src="${evt.target.result}" alt="OCT STORE">`;
-      alert('✅ تم تحديث الشعار بنجاح! سيظهر في جميع الصفحات.');
+      alert('✅ تم تحديث الشعار بنجاح!');
       e.target.reset();
     };
     reader.readAsDataURL(file);
@@ -73,16 +73,28 @@ function bindForms() {
   // Portfolio
   document.getElementById('portfolio-form').addEventListener('submit', e => {
     e.preventDefault();
-    const list = getPortfolio();
-    list.push({
-      id: Date.now(),
-      name: document.getElementById('pf-name').value.trim(),
-      description: document.getElementById('pf-desc').value.trim(),
-      link: document.getElementById('pf-link').value.trim() || '#',
-    });
-    setPortfolio(list);
-    e.target.reset();
-    renderPortfolioAdmin();
+    const name = document.getElementById('pf-name').value.trim();
+    const desc = document.getElementById('pf-desc').value.trim();
+    const link = document.getElementById('pf-link').value.trim() || '#';
+    const file = document.getElementById('pf-image').files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const list = getPortfolio();
+        list.push({ id: Date.now(), name, description: desc, link, image: evt.target.result });
+        setPortfolio(list);
+        e.target.reset();
+        renderPortfolioAdmin();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const list = getPortfolio();
+      list.push({ id: Date.now(), name, description: desc, link });
+      setPortfolio(list);
+      e.target.reset();
+      renderPortfolioAdmin();
+    }
   });
 
   // Features
@@ -177,9 +189,10 @@ function renderOrdersAdmin() {
       <div>
         <strong>👤 ${escapeHtml(o.name)}</strong> — 📱 ${escapeHtml(o.phone)}
         <p class="order-features">${o.features.map(f => escapeHtml(f.name)).join(' • ')}</p>
+        ${o.notes ? `<p class="order-custom-text">📝 ${escapeHtml(o.notes)}</p>` : ''}
         <small>🕒 ${escapeHtml(o.date)}</small>
       </div>
       <div class="order-total">${formatPrice(o.total)}</div>
     </div>
   `).join('');
-}
+      }
