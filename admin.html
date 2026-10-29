@@ -24,7 +24,7 @@
       <h2 class="section-title">تسجيل دخول المدير</h2>
       <form id="login-form">
         <label>البريد الإلكتروني
-          <input type="email" id="login-email" required placeholder="hishamyousef333@gmail.com">
+          <input type="email" id="login-email" required placeholder="أدخل البريد الإلكتروني">
         </label>
         <label>كلمة المرور
           <input type="password" id="login-password" required placeholder="••••••••">
@@ -47,29 +47,27 @@
         <button class="tab" data-tab="orders">الطلبات</button>
       </div>
 
-      <!-- Logo -->
       <section id="tab-logo" class="tab-content">
         <h3>تحديث شعار الموقع (اللوجو)</h3>
-        <p class="hint">اختر صورة من جهازك (يفضل خلفية شفافة PNG). سيتم حفظها في المتصفح وتظهر بجميع الصفحات.</p>
+        <p class="hint">اختر صورة من جهازك (يفضل خلفية شفافة PNG). سيتم حفظها وتظهر بجميع الصفحات.</p>
         <form id="logo-form" class="inline-form">
           <input type="file" id="logo-file" accept="image/*" required>
           <button type="submit" class="btn-primary">رفع الشعار</button>
         </form>
       </section>
 
-      <!-- Portfolio -->
       <section id="tab-portfolio" class="tab-content" style="display:none">
         <h3>إضافة عمل جديد</h3>
         <form id="portfolio-form" class="inline-form">
           <input type="text" id="pf-name" placeholder="اسم البوت" required>
           <input type="text" id="pf-desc" placeholder="وصف قصير" required>
           <input type="url" id="pf-link" placeholder="رابط البوت (اختياري)">
+          <input type="file" id="pf-image" accept="image/*">
           <button type="submit" class="btn-primary">إضافة</button>
         </form>
         <div id="portfolio-admin-list" class="admin-list"></div>
       </section>
 
-      <!-- Features -->
       <section id="tab-features" class="tab-content" style="display:none">
         <h3>إضافة ميزة جديدة</h3>
         <form id="feature-form" class="inline-form">
@@ -80,7 +78,6 @@
         <div id="features-admin-list" class="admin-list"></div>
       </section>
 
-      <!-- Orders -->
       <section id="tab-orders" class="tab-content" style="display:none">
         <h3>الطلبات الواردة</h3>
         <p class="hint">الطلبات هنا محفوظة محلياً في هذا المتصفح فقط — الطلبات الحقيقية تصلك عبر واتساب.</p>
