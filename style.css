@@ -47,6 +47,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .hero { 
   text-align: center; 
   padding: 5rem 1rem 4rem; 
+  /* جعلنا الخلفية شفافة جداً لإظهار الشعار */
+  background: rgba(248, 249, 250, 0.3); 
+  border-bottom: 1px solid #e9ecef;
+}.hero { 
+  text-align: center; 
+  padding: 5rem 1rem 4rem; 
   /* إضافة خلفية بيضاء شفافة خلف النص ليكون مقروءاً فوق الشعار */
   background: rgba(248, 249, 250, 0.7); 
   backdrop-filter: blur(3px);
@@ -74,41 +80,28 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 }
 .btn-ghost:hover { color: var(--text); border-color: var(--primary); }
 
+
 /* ——— Sections ——— */
 .section { 
   padding: 3rem 0; 
-  /* إضافة خلفية بيضاء شفافة للأقسام لتبدو مرتبة فوق الشعار */
-  background: rgba(248, 249, 250, 0.85); 
-  backdrop-filter: blur(5px);
-  border-radius: 20px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  /* شفافة تماماً لكي تظهر الخلفية */
+  background: transparent; 
 }
+
+
 /* ——— Portfolio ——— */
-.portfolio-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
 .portfolio-card {
-  background: var(--card); border: 1px solid #e9ecef; border-radius: 16px;
-  padding: 1.75rem; transition: transform .3s, border-color .3s, box-shadow .3s;
-  animation: fadeUp .6s backwards; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  /* جعلنا البطاقة بيضاء شبه معتمة ليظل النص مقروءاً فوق الشعار */
+  background: rgba(255, 255, 255, 0.95); 
+  backdrop-filter: blur(5px);
+  border: 1px solid #e9ecef; 
+  border-radius: 16px;
+  padding: 1.75rem; 
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+  animation: fadeUp .6s backwards; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   display: flex; flex-direction: column;
 }
-.portfolio-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 10px 30px rgba(217, 4, 41, 0.1); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.card-icon { font-size: 2.5rem; margin-bottom: .75rem; text-align: center; }
-.card-img {
-  width: 100%;
-  height: 300px;
-  object-fit: contain;
-  background: #f8f9fa;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #e9ecef;
-}
-.portfolio-card h3 { font-size: 1.2rem; margin-bottom: .5rem; text-align: center; }
-.portfolio-card p { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; text-align: center; flex: 1; }
-.card-link { color: var(--primary); text-decoration: none; font-weight: 700; text-align: center; display: block; }
-.card-link:hover { color: var(--accent); }
-
 /* ——— Order page ——— */
 .features-list { display: grid; gap: .75rem; max-width: 700px; margin: 0 auto 1.5rem; }
 .feature-item {
