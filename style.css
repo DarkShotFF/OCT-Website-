@@ -18,10 +18,12 @@
 
 body {
   font-family: 'Cairo', 'Segoe UI', sans-serif;
-  background: var(--bg);
+  background-color: var(--bg); /* سيتم استبدالها بالصورة عبر JS */
   color: var(--text);
   min-height: 100vh;
   line-height: 1.7;
+  /* إضافة لضمان ثبات الخلفية على الهواتف */
+  background-attachment: fixed; 
 }
 
 .container { max-width: 1100px; margin: auto; padding: 0 1.5rem; }
@@ -42,11 +44,13 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-links a:hover, .nav-links a.active { color: var(--primary); background: rgba(217, 4, 41, 0.08); }
 
 /* ——— Hero ——— */
-.hero { text-align: center; padding: 5rem 1rem 4rem; }
-.hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; margin: 1rem 0; }
-.gradient {
-  background: linear-gradient(135deg, var(--accent), var(--primary));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+.hero { 
+  text-align: center; 
+  padding: 5rem 1rem 4rem; 
+  /* إضافة خلفية بيضاء شفافة خلف النص ليكون مقروءاً فوق الشعار */
+  background: rgba(248, 249, 250, 0.7); 
+  backdrop-filter: blur(3px);
+  border-bottom: 1px solid #e9ecef;
 }
 .tagline { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
 
@@ -71,10 +75,15 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .btn-ghost:hover { color: var(--text); border-color: var(--primary); }
 
 /* ——— Sections ——— */
-.section { padding: 3rem 0; }
-.section-title { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; text-align: center; }
-.section-sub { color: var(--muted); text-align: center; margin-bottom: 2.5rem; }
-
+.section { 
+  padding: 3rem 0; 
+  /* إضافة خلفية بيضاء شفافة للأقسام لتبدو مرتبة فوق الشعار */
+  background: rgba(248, 249, 250, 0.85); 
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 /* ——— Portfolio ——— */
 .portfolio-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
 .portfolio-card {
