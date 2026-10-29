@@ -86,7 +86,15 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .portfolio-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 10px 30px rgba(217, 4, 41, 0.1); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-icon { font-size: 2.5rem; margin-bottom: .75rem; text-align: center; }
-.card-img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+.card-img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #e9ecef;
+}
 .portfolio-card h3 { font-size: 1.2rem; margin-bottom: .5rem; text-align: center; }
 .portfolio-card p { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; text-align: center; flex: 1; }
 .card-link { color: var(--primary); text-decoration: none; font-weight: 700; text-align: center; display: block; }
