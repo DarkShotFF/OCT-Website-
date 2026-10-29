@@ -53,7 +53,7 @@
       }
       grid.innerHTML = items.map((item, i) => `
         <div class="portfolio-card" style="animation-delay:${i * 0.1}s">
-          <div class="card-icon">🤖</div>
+          ${item.image ? `<img src="${item.image}" class="card-img" alt="${escapeHtml(item.name)}">` : `<div class="card-icon">🤖</div>`}
           <h3>${escapeHtml(item.name)}</h3>
           <p>${escapeHtml(item.description)}</p>
           ${item.link && item.link !== '#' ? `<a href="${escapeHtml(item.link)}" target="_blank" rel="noopener" class="card-link">زيارة البوت ←</a>` : ''}
