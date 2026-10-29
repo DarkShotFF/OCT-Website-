@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اطلب بوتك | OCT STORE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="index.html" class="logo" id="site-logo">OCT STORE 🐙</a>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="order.html" class="active">اطلب بوتك</a></li>
+        <li><a href="admin.html">الإدارة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h2 class="section-title">اطلب بوتك المخصص</h2>
+    <p class="section-sub">اختر الميزات التي تريدها في بوتك وسيظهر السعر الإجمالي تلقائياً</p>
+
+    <div class="features-list" id="features-list"></div>
+
+    <div class="total-bar">
+      <div>
+        <span class="total-label">السعر الإجمالي:</span>
+        <span class="total-price" id="total-price">0 ل.س</span>
+      </div>
+      <button class="btn-primary" id="confirm-btn" disabled>موافق ✓</button>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="options-modal">
+    <div class="modal">
+      <h3>اختر طريقة إتمام الطلب</h3>
+      <div class="modal-options">
+        <button class="option-btn" id="direct-contact">
+          <span class="option-icon">💬</span>
+          <span class="option-text">التواصل مع المطور مباشرة</span>
+          <small>بدون تسجيل — يفتح محادثة تيليجرام</small>
+        </button>
+        <button class="option-btn" id="send-order">
+          <span class="option-icon">📩</span>
+          <span class="option-text">إرسال الطلب مع رقم التواصل</span>
+          <small>سيتم إرسال الطلب عبر واتساب للمطور</small>
+        </button>
+      </div>
+      <button class="btn-ghost" id="close-modal">إلغاء</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="form-modal">
+    <div class="modal">
+      <h3>أدخل بياناتك لإرسال الطلب</h3>
+      <form id="order-form">
+        <label>الاسم
+          <input type="text" id="customer-name" required placeholder="اسمك الكامل">
+        </label>
+        <label>رقم التواصل (واتساب)
+          <input type="tel" id="customer-phone" required placeholder="مثال: 0912345678">
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">إرسال الطلب ✓</button>
+          <button type="button" class="btn-ghost" id="close-form">رجوع</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="config.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>

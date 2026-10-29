@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة | OCT STORE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="index.html" class="logo" id="site-logo">OCT STORE 🐙</a>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="order.html">اطلب بوتك</a></li>
+        <li><a href="admin.html" class="active">الإدارة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <div id="login-view" class="login-card">
+      <h2 class="section-title">تسجيل دخول المدير</h2>
+      <form id="login-form">
+        <label>البريد الإلكتروني
+          <input type="email" id="login-email" required placeholder="hishamyousef333@gmail.com">
+        </label>
+        <label>كلمة المرور
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </label>
+        <button type="submit" class="btn-primary">دخول</button>
+        <p class="error-msg" id="login-error"></p>
+      </form>
+    </div>
+
+    <div id="admin-view" style="display:none">
+      <div class="admin-header">
+        <h2 class="section-title">لوحة تحكم المدير</h2>
+        <button class="btn-ghost" id="logout-btn">تسجيل خروج</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="logo">الشعار</button>
+        <button class="tab" data-tab="portfolio">معرض الأعمال</button>
+        <button class="tab" data-tab="features">الميزات</button>
+        <button class="tab" data-tab="orders">الطلبات</button>
+      </div>
+
+      <!-- Logo -->
+      <section id="tab-logo" class="tab-content">
+        <h3>تحديث شعار الموقع (اللوجو)</h3>
+        <p class="hint">اختر صورة من جهازك (يفضل خلفية شفافة PNG). سيتم حفظها في المتصفح وتظهر بجميع الصفحات.</p>
+        <form id="logo-form" class="inline-form">
+          <input type="file" id="logo-file" accept="image/*" required>
+          <button type="submit" class="btn-primary">رفع الشعار</button>
+        </form>
+      </section>
+
+      <!-- Portfolio -->
+      <section id="tab-portfolio" class="tab-content" style="display:none">
+        <h3>إضافة عمل جديد</h3>
+        <form id="portfolio-form" class="inline-form">
+          <input type="text" id="pf-name" placeholder="اسم البوت" required>
+          <input type="text" id="pf-desc" placeholder="وصف قصير" required>
+          <input type="url" id="pf-link" placeholder="رابط البوت (اختياري)">
+          <button type="submit" class="btn-primary">إضافة</button>
+        </form>
+        <div id="portfolio-admin-list" class="admin-list"></div>
+      </section>
+
+      <!-- Features -->
+      <section id="tab-features" class="tab-content" style="display:none">
+        <h3>إضافة ميزة جديدة</h3>
+        <form id="feature-form" class="inline-form">
+          <input type="text" id="ft-name" placeholder="اسم الميزة" required>
+          <input type="number" id="ft-price" placeholder="السعر (ل.س)" required min="0" step="1000">
+          <button type="submit" class="btn-primary">إضافة</button>
+        </form>
+        <div id="features-admin-list" class="admin-list"></div>
+      </section>
+
+      <!-- Orders -->
+      <section id="tab-orders" class="tab-content" style="display:none">
+        <h3>الطلبات الواردة</h3>
+        <p class="hint">الطلبات هنا محفوظة محلياً في هذا المتصفح فقط — الطلبات الحقيقية تصلك عبر واتساب.</p>
+        <div id="orders-list" class="admin-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

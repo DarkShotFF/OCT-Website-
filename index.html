@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCT STORE | متجر بوتات تيليجرام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="index.html" class="logo" id="site-logo">OCT STORE 🐙</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="order.html">اطلب بوتك</a></li>
+        <li><a href="admin.html">الإدارة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>متجر <span class="gradient">OCT STORE</span></h1>
+      <p class="tagline">نبرمج لك بوتات تيليجرام احترافية بجودة عالية وأسعار تنافسية بالليرة السورية</p>
+      <a href="order.html" class="btn-primary big">اطلب بوتك الآن 🚀</a>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">معرض أعمالنا</h2>
+    <p class="section-sub">بعض البوتات التي برمجناها لعملائنا</p>
+    <div id="portfolio-grid" class="portfolio-grid"></div>
+  </section>
+
+  <footer>
+    <div class="container"><p>© 2025 OCT STORE — جميع الحقوق محفوظة</p></div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoData = getLogo();
+      if (logoData) {
+        document.getElementById('site-logo').innerHTML = `<img src="${logoData}" alt="OCT STORE">`;
+      }
+
+      const grid = document.getElementById('portfolio-grid');
+      const items = getPortfolio();
+      if (!items.length) {
+        grid.innerHTML = '<p class="empty">لا توجد أعمال بعد. أضفها من لوحة الإدارة.</p>';
+        return;
+      }
+      grid.innerHTML = items.map((item, i) => `
+        <div class="portfolio-card" style="animation-delay:${i * 0.1}s">
+          <div class="card-icon">🤖</div>
+          <h3>${escapeHtml(item.name)}</h3>
+          <p>${escapeHtml(item.description)}</p>
+          ${item.link && item.link !== '#' ? `<a href="${escapeHtml(item.link)}" target="_blank" rel="noopener" class="card-link">زيارة البوت ←</a>` : ''}
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
