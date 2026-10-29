@@ -46,15 +46,16 @@
         // 1. وضع الشعار في الشريط العلوي
         document.getElementById('site-logo').innerHTML = `<img src="${logoData}" alt="OCT STORE">`;
         
-        // 2. وضع الشعار كخلفية ثابتة للموقع كامل
+        // 2. وضع الشعار كخلفية واضحة للموقع
         document.body.style.backgroundImage = `url(${logoData})`;
-        document.body.style.backgroundSize = 'contain'; /* تظهر الصورة كاملة */
-        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundSize = '85% auto'; 
+        document.body.style.backgroundPosition = 'center 15%'; 
         document.body.style.backgroundRepeat = 'no-repeat';
         document.body.style.backgroundAttachment = 'fixed';
-        document.body.style.backgroundBlendMode = 'overlay'; // لدمج الشعار مع الخلفية البيضاء
+        document.body.style.backgroundBlendMode = 'multiply'; 
       }
 
+      // 3. عرض معرض الأعمال
       const grid = document.getElementById('portfolio-grid');
       const items = getPortfolio();
       if (!items.length) {
@@ -71,7 +72,5 @@
       `).join('');
     });
   </script>
-</body>
-</html>
 </body>
 </html>
