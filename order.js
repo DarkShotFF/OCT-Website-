@@ -49,9 +49,15 @@ function getTotal() {
 
 function buildOrderText() {
   const featuresList = selectedFeatures.map(f => `• ${f.name} (${formatPrice(f.price)})`).join('\n');
-  return `مرحباً، أريد طلب بوت تيليجرام من متجر OCT STORE\n\n` +
-         `📋 الميزات المطلوبة:\n${featuresList}\n\n` +
-         `💰 السعر الإجمالي: ${formatPrice(getTotal())}`;
+  const notes = document.getElementById('custom-notes').value.trim();
+  
+  let text = `مرحباً، أريد طلب بوت تيليجرام من متجر OCT STORE\n\n` +
+             `📋 الميزات المطلوبة:\n${featuresList}\n`;
+  if (notes) {
+    text += `\n📝 تفاصيل إضافية:\n${notes}\n`;
+  }
+  text += `\n💰 السعر الإجمالي: ${formatPrice(getTotal())}`;
+  return text;
 }
 
 function bindEvents() {
@@ -85,11 +91,13 @@ function handleSubmitOrder(e) {
   e.preventDefault();
   const name = document.getElementById('customer-name').value.trim();
   const phone = document.getElementById('customer-phone').value.trim();
+  const notes = document.getElementById('custom-notes').value.trim();
+  
   if (!name || !phone) return;
 
   const order = {
     id: Date.now(),
-    name, phone,
+    name, phone, notes,
     features: selectedFeatures,
     total: getTotal(),
     date: new Date().toLocaleString('ar-EG'),
@@ -101,14 +109,18 @@ function handleSubmitOrder(e) {
 
   const message = `مرحباً، أريد طلب بوت تيليجرام من متجر OCT STORE\n\n` +
                   `👤 الاسم: ${name}\n📱 الرقم: ${phone}\n\n` +
-                  `📋 الميزات:\n${selectedFeatures.map(f => `• ${f.name} (${formatPrice(f.price)})`).join('\n')}\n\n` +
-                  `💰 الإجمالي: ${formatPrice(getTotal())}`;
+                  `📋 الميزات:\n${selectedFeatures.map(f => `• ${f.name} (${formatPrice(f.price)})`).join('\n')}\n` +
+                  (notes ? `\n📝 تفاصيل إضافية:\n${notes}\n` : '') +
+                  `\n💰 الإجمالي: ${formatPrice(getTotal())}`;
+  
   const waUrl = `https://wa.me/${CONFIG.DEVELOPER_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
   document.getElementById('form-modal').classList.remove('show');
   showToast('✅ تم حفظ طلبك! جاري فتح واتساب...');
   setTimeout(() => window.open(waUrl, '_blank'), 800);
+  
   document.getElementById('order-form').reset();
+  document.getElementById('custom-notes').value = '';
 }
 
 function showToast(msg) {
